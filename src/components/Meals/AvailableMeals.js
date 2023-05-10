@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import Card from "../UI/Card";
-import MealItem from "./MealItem/MealItem";
-import classes from "./AvailableMeals.module.css";
+import Card from '../UI/Card';
+import MealItem from './MealItem/MealItem';
+import classes from './AvailableMeals.module.css';
 
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
@@ -16,7 +16,7 @@ const AvailableMeals = () => {
       );
 
       if (!response.ok) {
-        throw new Error("Somthing went wrong!");
+        throw new Error('Something went wrong!');
       }
 
       const responseData = await response.json();
@@ -35,7 +35,7 @@ const AvailableMeals = () => {
       setMeals(loadedMeals);
       setIsLoading(false);
     };
- 
+
     fetchMeals().catch((error) => {
       setIsLoading(false);
       setHttpError(error.message);
@@ -49,6 +49,7 @@ const AvailableMeals = () => {
       </section>
     );
   }
+
   if (httpError) {
     return (
       <section className={classes.MealsError}>
@@ -56,6 +57,7 @@ const AvailableMeals = () => {
       </section>
     );
   }
+
   const mealsList = meals.map((meal) => (
     <MealItem
       key={meal.id}
